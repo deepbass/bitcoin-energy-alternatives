@@ -10,16 +10,40 @@ const comparisonsData: Comparison[] = [
         logo: Logo.Airplane
     },
     {
+        name: "Flight from New York to Minneapolis",
+        resourceType: ResourceType.CarbonDioxide,
+        resourceUsage: 260,
+        logo: Logo.Airplane
+    },
+    {
+        name: "Flight from Singapore to Bangkok",
+        resourceType: ResourceType.CarbonDioxide,
+        resourceUsage: 230,
+        logo: Logo.Airplane
+    },
+    {
         name: "Drive from London, England to Homs, Syria",
         resourceType: ResourceType.Electricity,
         resourceUsage: 665,
         logo: Logo.Car
     },
     {
+        name: "Boil 3144 kettles",
+        resourceType: ResourceType.Electricity,
+        resourceUsage: 707.4,
+        logo: Logo.Tea
+    },
+    {
         name: "Throw away 3 Apple Watches",
         resourceType: ResourceType.EWaste,
         resourceUsage: 91.5,
         logo: Logo.Watch
+    },
+    {
+        name: "Throw away 11 pairs of Apple AirPods",
+        resourceType: ResourceType.EWaste,
+        resourceUsage: 88,
+        logo: Logo.Headphones
     }
 ]
 

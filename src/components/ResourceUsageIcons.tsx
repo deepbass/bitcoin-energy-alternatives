@@ -20,8 +20,8 @@ function ResourceUsageIcons({ comparisons }: ResourceUsageIconsProps) {
             <>
             </>
             :
-            <Grid direction="row" container>
-                <Grid item xs={2}>
+            <Grid direction="row" container justify="space-between">
+                <Grid item xs={2} justify="center" alignItems="center" container>
                     {
                         activeComparisonIndex === 0
                             ?
@@ -31,7 +31,7 @@ function ResourceUsageIcons({ comparisons }: ResourceUsageIconsProps) {
                             )
                             :
                             (
-                                <IconButton style={{ float: "right" }} color="primary" aria-label="upload picture" component="span" onClick={() => { setActiveComparisonIndex(activeComparisonIndex - 1) }}>
+                                <IconButton color="primary" aria-label="upload picture" component="span" onClick={() => { setActiveComparisonIndex(activeComparisonIndex - 1) }}>
                                     <KeyboardArrowLeftIcon />
                                 </IconButton>
                             )
@@ -46,7 +46,7 @@ function ResourceUsageIcons({ comparisons }: ResourceUsageIconsProps) {
                         </CardContent>
                     </Card>
                 </Grid>
-                <Grid item xs={2}>
+                <Grid item xs={2} justify="center" alignItems="center" container>
                     {
                         activeComparisonIndex === comparisons.length - 1
                             ?

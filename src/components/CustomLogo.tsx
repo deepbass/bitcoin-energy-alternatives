@@ -2,6 +2,8 @@ import { Logo } from "../models/Logo"
 import DirectionsCarSharpIcon from '@material-ui/icons/DirectionsCarSharp';
 import FlightTakeoffSharpIcon from '@material-ui/icons/FlightTakeoffSharp';
 import WatchSharpIcon from '@material-ui/icons/WatchSharp';
+import EmojiFoodBeverageSharpIcon from '@material-ui/icons/EmojiFoodBeverageSharp';
+import HeadsetSharpIcon from '@material-ui/icons/HeadsetSharp';
 
 type CustomLogoProps = {
     logo: Logo
@@ -24,6 +26,16 @@ function CustomLogo({logo}: CustomLogoProps) {
         case Logo.Watch: {
             return (
                 <WatchSharpIcon style={{fontSize: FONT_SIZE}} />
+            )
+        }
+        case Logo.Tea: {
+            return (
+                <EmojiFoodBeverageSharpIcon style={{fontSize: FONT_SIZE}} />
+            )
+        }
+        case Logo.Headphones: {
+            return (
+                <HeadsetSharpIcon style={{fontSize: FONT_SIZE}} />
             )
         }
     }
