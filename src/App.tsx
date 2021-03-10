@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { Container, Grid, ThemeProvider, Typography } from '@material-ui/core';
+import React, { useEffect, useState } from 'react';
+import { Container, Grid, Link, ThemeProvider, Typography } from '@material-ui/core';
 import { Comparison } from './models/Comparison';
 import { getBitcoinResourceUsage, getComparisons } from './services/ApiService';
 import { ResourceUsageIcons } from './components/ResourceUsageIcons';
@@ -25,22 +25,25 @@ function App() {
     <ThemeProvider theme={theme}>
       <StandardAppBar />
       <Container maxWidth="md">
-
         <header>
-          <Typography variant="body1">Did you know that Bitcoin's transaction system is spectacularly wasteful? Before you buy some bitcoin to try and make some money, consider that that single transaction will use: </Typography>
+          <Typography variant="h1" gutterBottom>Before you buy some bitcoin...</Typography>
+          <Typography variant="body1" gutterBottom>Did you know that Bitcoin's transaction system is spectacularly wasteful? Before you buy some bitcoin to try and make some money, consider that a single transaction will use: </Typography>
         </header>
         <Grid container direction="column" spacing={3}>
           <Grid item>
-            <Typography style={{ textAlign: 'center' }} variant="subtitle1">{bitcoinResourceUsage?.carbonDioxideInKg} {ResourceTypeUnitText(ResourceType.CarbonDioxide)}</Typography>
+            <Typography style={{ textAlign: 'center' }} variant="h3">{bitcoinResourceUsage?.carbonDioxideInKg} {ResourceTypeUnitText(ResourceType.CarbonDioxide)}</Typography><Typography style={{ textAlign: 'center' }} variant="subtitle1">The following things emit less: </Typography>
             <ResourceUsageIcons comparisons={comparisons.filter(x => x.resourceType === ResourceType.CarbonDioxide)} />
           </Grid>
           <Grid item>
-            <Typography style={{ textAlign: 'center' }} variant="subtitle1">{bitcoinResourceUsage?.electricityUsageInkWh} {ResourceTypeUnitText(ResourceType.Electricity)}</Typography>
+            <Typography style={{ textAlign: 'center' }} variant="h3">{bitcoinResourceUsage?.electricityUsageInkWh} {ResourceTypeUnitText(ResourceType.Electricity)}</Typography><Typography style={{ textAlign: 'center' }} variant="subtitle1">That could be used to: </Typography>
             <ResourceUsageIcons comparisons={comparisons.filter(x => x.resourceType === ResourceType.Electricity)} />
           </Grid>
           <Grid item>
-            <Typography style={{ textAlign: 'center' }} variant="subtitle1">{bitcoinResourceUsage?.eWasteInGrams} {ResourceTypeUnitText(ResourceType.EWaste)}</Typography>
+            <Typography style={{ textAlign: 'center' }} variant="h3">{bitcoinResourceUsage?.eWasteInGrams} {ResourceTypeUnitText(ResourceType.EWaste)}</Typography><Typography style={{ textAlign: 'center' }} variant="subtitle1">Equivalent amounts of e-waste would be produced by: </Typography>
             <ResourceUsageIcons comparisons={comparisons.filter(x => x.resourceType === ResourceType.EWaste)} />
+          </Grid>
+          <Grid item>
+            <Typography variant="body1">The per-transaction Bitcoin Resource Usage data is sourced from <Link href="https://digiconomist.net/bitcoin-energy-consumption">Digiconomist</Link></Typography>
           </Grid>
         </Grid>
       </Container>

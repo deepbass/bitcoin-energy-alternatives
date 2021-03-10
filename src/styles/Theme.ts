@@ -1,8 +1,8 @@
 import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles'
-import { red, grey } from '@material-ui/core/colors'
+import { red, grey,teal,pink } from '@material-ui/core/colors'
 
-const primary = red.A700
-const secondary = '#C41237'
+const primary = teal[500]
+const secondary = pink[500]
 // eslint-disable-next-line @typescript-eslint/no-use-before-define
 const error = red[500]
 

@@ -4,6 +4,8 @@ import FlightTakeoffSharpIcon from '@material-ui/icons/FlightTakeoffSharp';
 import WatchSharpIcon from '@material-ui/icons/WatchSharp';
 import EmojiFoodBeverageSharpIcon from '@material-ui/icons/EmojiFoodBeverageSharp';
 import HeadsetSharpIcon from '@material-ui/icons/HeadsetSharp';
+import LocalHospitalSharpIcon from '@material-ui/icons/LocalHospitalSharp';
+import FastfoodSharpIcon from '@material-ui/icons/FastfoodSharp';
 
 type CustomLogoProps = {
     logo: Logo
@@ -36,6 +38,16 @@ function CustomLogo({logo}: CustomLogoProps) {
         case Logo.Headphones: {
             return (
                 <HeadsetSharpIcon style={{fontSize: FONT_SIZE}} />
+            )
+        }
+        case Logo.Hospital: {
+            return (
+                <LocalHospitalSharpIcon style={{fontSize: FONT_SIZE}} />
+            )
+        }
+        case Logo.Food: {
+            return (
+                <FastfoodSharpIcon style={{fontSize: FONT_SIZE}} />
             )
         }
     }

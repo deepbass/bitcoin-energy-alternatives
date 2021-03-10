@@ -10,6 +10,12 @@ const comparisonsData: Comparison[] = [
         logo: Logo.Airplane
     },
     {
+        name: "Eat 50kg of chicken",
+        resourceType: ResourceType.CarbonDioxide,
+        resourceUsage: 328.5,
+        logo: Logo.Food
+    },
+    {
         name: "Flight from New York to Minneapolis",
         resourceType: ResourceType.CarbonDioxide,
         resourceUsage: 260,
@@ -22,10 +28,16 @@ const comparisonsData: Comparison[] = [
         logo: Logo.Airplane
     },
     {
-        name: "Drive from London, England to Homs, Syria",
+        name: "Drive a Tesla Model 3 from London, England to Homs, Syria",
         resourceType: ResourceType.Electricity,
         resourceUsage: 665,
         logo: Logo.Car
+    },
+    {
+        name: "Run a life support machine for 4 months",
+        resourceType: ResourceType.Electricity,
+        resourceUsage: 626,
+        logo: Logo.Hospital
     },
     {
         name: "Boil 3144 kettles",

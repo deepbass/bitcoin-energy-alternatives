@@ -32,7 +32,7 @@ export default function StandardAppBar() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            The Bitcoin Environmental Disaster
+            Bincoin
           </Typography>
         </Toolbar>
       </AppBar>
