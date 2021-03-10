@@ -38,11 +38,19 @@ function ResourceUsageIcons({ comparisons }: ResourceUsageIconsProps) {
                     }
                 </Grid>
                 <Grid item xs={8}>
-                    <Card variant="outlined" style={{textAlign: "center"}}>
+                    <Card variant="outlined" style={{ textAlign: "center", minHeight: "300px" }}>
                         <CardContent>
-                                <Typography variant="subtitle1">{activeComparison.name}</Typography>
-                                <CustomLogo logo={activeComparison.logo} />
-                                <Typography variant="body1">{activeComparison.resourceUsage} {ResourceTypeUnitText(activeComparison.resourceType)}</Typography>
+                            <Grid style={{height:"300px"}} container direction="column" justify="space-between" alignItems="center">
+                                <Grid item>
+                                    <Typography variant="subtitle1">{activeComparison.name}</Typography>
+                                </Grid>
+                                <Grid item>
+                                    <CustomLogo logo={activeComparison.logo} />
+                                </Grid>
+                                <Grid item>
+                                    <Typography variant="body1">{activeComparison.resourceUsage} {ResourceTypeUnitText(activeComparison.resourceType)}</Typography>
+                                </Grid>
+                            </Grid>
                         </CardContent>
                     </Card>
                 </Grid>

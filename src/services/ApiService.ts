@@ -15,7 +15,8 @@ async function getComparisons(): Promise<Comparison[]> {
 async function getBitcoinResourceUsage(): Promise<BitcoinResourceUsage> {
     const url = `${getDomain()}/api/GetCurrentBitcoinResourceUsage`;
     const response = await fetch(url)
-    return await response.json()
+    const responseObject: BitcoinResourceUsage = await response.json()
+    return responseObject
 }
 
 export { getDomain, getComparisons, getBitcoinResourceUsage }
