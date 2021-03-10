@@ -7,21 +7,23 @@ type CustomLogoProps = {
     logo: Logo
 }
 
+const FONT_SIZE = 150;
+
 function CustomLogo({logo}: CustomLogoProps) {
     switch(logo){
         case Logo.Car: {
             return (
-                <DirectionsCarSharpIcon />
+                <DirectionsCarSharpIcon style={{fontSize: FONT_SIZE}} />
             )
         }
         case Logo.Airplane: {
             return (
-                <FlightTakeoffSharpIcon />
+                <FlightTakeoffSharpIcon style={{fontSize: FONT_SIZE}} />
             )
         }
         case Logo.Watch: {
             return (
-                <WatchSharpIcon />
+                <WatchSharpIcon style={{fontSize: FONT_SIZE}} />
             )
         }
     }
