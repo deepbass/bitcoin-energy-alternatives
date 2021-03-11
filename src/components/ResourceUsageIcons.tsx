@@ -5,6 +5,7 @@ import KeyboardArrowLeftIcon from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
 import { CustomLogo } from "./CustomLogo";
 import { ResourceTypeUnitText } from "./ResourceTypeUnitText";
+import { useAppInsightsContext, useTrackEvent } from "@microsoft/applicationinsights-react-js";
 
 type ResourceUsageIconsProps = {
     comparisons: Comparison[]
@@ -13,6 +14,12 @@ type ResourceUsageIconsProps = {
 function ResourceUsageIcons({ comparisons }: ResourceUsageIconsProps) {
     const [activeComparisonIndex, setActiveComparisonIndex] = useState<number>(0)
     let activeComparison = comparisons[activeComparisonIndex]
+
+
+    const appInsights = useAppInsightsContext();
+
+    const trackViewNext = useTrackEvent(appInsights, "ViewNext",{ currentName: activeComparison?.name});
+    const trackViewLast = useTrackEvent(appInsights, "ViewLast",{ currentName: activeComparison?.name});
 
     return (
         activeComparison == null
@@ -31,7 +38,7 @@ function ResourceUsageIcons({ comparisons }: ResourceUsageIconsProps) {
                             )
                             :
                             (
-                                <IconButton color="primary" aria-label="upload picture" component="span" onClick={() => { setActiveComparisonIndex(activeComparisonIndex - 1) }}>
+                                <IconButton color="primary" aria-label="upload picture" component="span" onClick={() => {trackViewLast({currentName:activeComparison?.name}); setActiveComparisonIndex(activeComparisonIndex - 1) }}>
                                     <KeyboardArrowLeftIcon />
                                 </IconButton>
                             )
@@ -40,7 +47,7 @@ function ResourceUsageIcons({ comparisons }: ResourceUsageIconsProps) {
                 <Grid item xs={8}>
                     <Card variant="outlined" style={{ textAlign: "center", minHeight: "300px" }}>
                         <CardContent>
-                            <Grid style={{height:"300px"}} container direction="column" justify="space-between" alignItems="center">
+                            <Grid style={{ height: "300px" }} container direction="column" justify="space-between" alignItems="center">
                                 <Grid item>
                                     <Typography variant="subtitle1">{activeComparison.name}</Typography>
                                 </Grid>
@@ -64,7 +71,7 @@ function ResourceUsageIcons({ comparisons }: ResourceUsageIconsProps) {
                             )
                             :
                             (
-                                <IconButton color="primary" aria-label="upload picture" component="span" onClick={() => { setActiveComparisonIndex(activeComparisonIndex + 1) }}>
+                                <IconButton color="primary" aria-label="upload picture" component="span" onClick={() => {trackViewNext({currentName: activeComparison?.name}); setActiveComparisonIndex(activeComparisonIndex + 1) }}>
                                     <KeyboardArrowRightIcon />
                                 </IconButton>
                             )
@@ -74,4 +81,4 @@ function ResourceUsageIcons({ comparisons }: ResourceUsageIconsProps) {
     )
 }
 
-export { ResourceUsageIcons }
+export default ResourceUsageIcons

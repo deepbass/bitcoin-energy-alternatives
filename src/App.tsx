@@ -2,12 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { Container, Grid, Link, ThemeProvider, Typography } from '@material-ui/core';
 import { Comparison } from './models/Comparison';
 import { getBitcoinResourceUsage, getComparisons } from './services/ApiService';
-import { ResourceUsageIcons } from './components/ResourceUsageIcons';
+import ResourceUsageIcons from './components/ResourceUsageIcons';
 import { ResourceType } from './models/ResourceType';
 import { ResourceTypeUnitText } from './components/ResourceTypeUnitText';
 import { BitcoinResourceUsage } from './models/BitcoinResourceUsage';
 import { theme } from './styles/Theme';
 import StandardAppBar from './components/StandardAppBar';
+import { AppInsightsContext } from '@microsoft/applicationinsights-react-js';
+import { reactPlugin } from './components/AppInsights';
 
 function formatDate(dateString: any){
   let date = new Date(dateString)
@@ -29,6 +31,7 @@ function App() {
   }, [])
 
   return (
+    <AppInsightsContext.Provider value={reactPlugin}>
     <ThemeProvider theme={theme}>
       <StandardAppBar />
       <Container maxWidth="md">
@@ -55,6 +58,7 @@ function App() {
         </Grid>
       </Container>
     </ThemeProvider>
+    </AppInsightsContext.Provider>
   );
 }
 
