@@ -70,7 +70,7 @@ type RoundedServingsAndUsage = {
 function calculateRoundedServingsAndUsage(ratio: number, usage: number): RoundedServingsAndUsage {
     let servings = usage / ratio
     let roundedServings = Math.floor(servings)
-    let roundedUsage = roundedServings * ratio;
+    let roundedUsage = Math.floor(roundedServings * ratio);
     return {
         roundedServings: roundedServings,
         roundedUsage: roundedUsage
