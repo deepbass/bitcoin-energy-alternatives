@@ -10,12 +10,6 @@ const comparisonsData: Comparison[] = [
         logo: Logo.Airplane
     },
     {
-        name: "Eat 50kg of chicken",
-        resourceType: ResourceType.CarbonDioxide,
-        resourceUsage: 328.5,
-        logo: Logo.Food
-    },
-    {
         name: "Flight from New York to Minneapolis",
         resourceType: ResourceType.CarbonDioxide,
         resourceUsage: 260,
@@ -32,31 +26,77 @@ const comparisonsData: Comparison[] = [
         resourceType: ResourceType.Electricity,
         resourceUsage: 665,
         logo: Logo.Car
-    },
-    {
-        name: "Run a life support machine for 4 months",
-        resourceType: ResourceType.Electricity,
-        resourceUsage: 626,
-        logo: Logo.Hospital
-    },
-    {
-        name: "Boil 3144 kettles",
-        resourceType: ResourceType.Electricity,
-        resourceUsage: 707.4,
-        logo: Logo.Tea
-    },
-    {
-        name: "Throw away 3 Apple Watches",
-        resourceType: ResourceType.EWaste,
-        resourceUsage: 91.5,
-        logo: Logo.Watch
-    },
-    {
-        name: "Throw away 11 pairs of Apple AirPods",
-        resourceType: ResourceType.EWaste,
-        resourceUsage: 88,
-        logo: Logo.Headphones
     }
 ]
 
-export { comparisonsData }
+function generateChickenData(carbon: number): Comparison {
+    let carbonForOneServing = 0.657
+    const { roundedServings, roundedUsage } = calculateRoundedServingsAndUsage(carbonForOneServing, carbon)
+    let comparison = new Comparison()
+    comparison.logo = Logo.Food
+    comparison.name = `Eating ${roundedServings} portions of chicken breast`
+    comparison.resourceType = ResourceType.CarbonDioxide
+    comparison.resourceUsage = roundedUsage
+    return comparison
+}
+
+function generateKettleData(electricity: number): Comparison {
+    let electricityForOneServing = 0.225
+    const { roundedServings, roundedUsage } = calculateRoundedServingsAndUsage(electricityForOneServing, electricity)
+    let comparison = new Comparison()
+    comparison.logo = Logo.Tea
+    comparison.name = `Boil ${roundedServings} kettles`
+    comparison.resourceType = ResourceType.Electricity
+    comparison.resourceUsage = roundedUsage
+    return comparison
+}
+
+function generateLifeSupportData(electricity: number): Comparison {
+    let electricityForOneServing = 156.5
+    const { roundedServings, roundedUsage } = calculateRoundedServingsAndUsage(electricityForOneServing, electricity)
+    let comparison = new Comparison()
+    comparison.logo = Logo.Hospital
+    comparison.name = `Run a life support machine for ${roundedServings} months`
+    comparison.resourceType = ResourceType.Electricity
+    comparison.resourceUsage = roundedUsage
+    return comparison
+}
+
+type RoundedServingsAndUsage = {
+    roundedServings: number
+    roundedUsage: number
+}
+
+function calculateRoundedServingsAndUsage(ratio: number, usage: number): RoundedServingsAndUsage {
+    let servings = usage / ratio
+    let roundedServings = Math.floor(servings)
+    let roundedUsage = roundedServings * ratio;
+    return {
+        roundedServings: roundedServings,
+        roundedUsage: roundedUsage
+    }
+}
+
+function generateAppleWatchData(ewaste: number): Comparison {
+    let electricityForOneServing = 30.5;
+    const { roundedServings, roundedUsage } = calculateRoundedServingsAndUsage(electricityForOneServing, ewaste)
+    let comparison = new Comparison()
+    comparison.logo = Logo.Watch
+    comparison.name = `Throw away ${roundedServings} Apple Watches`
+    comparison.resourceType = ResourceType.EWaste
+    comparison.resourceUsage = roundedUsage
+    return comparison
+}
+
+function generateAppleAirPodsData(ewaste: number): Comparison {
+    let electricityForOneServing = 8;
+    const { roundedServings, roundedUsage } = calculateRoundedServingsAndUsage(electricityForOneServing, ewaste)
+    let comparison = new Comparison()
+    comparison.logo = Logo.Headphones
+    comparison.name = `Throw away ${roundedServings} pairs of Apple AirPods`
+    comparison.resourceType = ResourceType.EWaste
+    comparison.resourceUsage = roundedUsage
+    return comparison
+}
+
+export { comparisonsData, generateChickenData, generateKettleData,generateAppleWatchData,generateAppleAirPodsData,generateLifeSupportData }

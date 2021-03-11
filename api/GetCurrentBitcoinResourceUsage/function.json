@@ -6,14 +6,22 @@
       "direction": "in",
       "name": "req",
       "methods": [
-        "get",
-        "post"
+        "get"
       ]
     },
     {
       "type": "http",
       "direction": "out",
       "name": "res"
+    },
+    {
+      "name": "resourceUsage",
+      "type": "table",
+      "tableName": "ResourceUsage",
+      "partitionKey": "1",
+      "rowKey": "1",
+      "connection": "MyStorageConnectionAppSetting",
+      "direction": "in"
     }
   ],
   "scriptFile": "../dist/GetCurrentBitcoinResourceUsage/index.js"
