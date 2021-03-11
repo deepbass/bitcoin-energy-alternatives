@@ -6,6 +6,7 @@ import EmojiFoodBeverageSharpIcon from '@material-ui/icons/EmojiFoodBeverageShar
 import HeadsetSharpIcon from '@material-ui/icons/HeadsetSharp';
 import LocalHospitalSharpIcon from '@material-ui/icons/LocalHospitalSharp';
 import FastfoodSharpIcon from '@material-ui/icons/FastfoodSharp';
+import Brightness3SharpIcon from '@material-ui/icons/Brightness3Sharp';
 
 type CustomLogoProps = {
     logo: Logo
@@ -48,6 +49,11 @@ function CustomLogo({logo}: CustomLogoProps) {
         case Logo.Food: {
             return (
                 <FastfoodSharpIcon style={{fontSize: FONT_SIZE}} />
+            )
+        }
+        case Logo.Moon: {
+            return (
+                <Brightness3SharpIcon style={{fontSize: FONT_SIZE}} />
             )
         }
     }

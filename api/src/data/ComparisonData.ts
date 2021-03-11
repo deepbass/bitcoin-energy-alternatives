@@ -62,6 +62,17 @@ function generateLifeSupportData(electricity: number): Comparison {
     return comparison
 }
 
+function generateRocketData(electricity: number): Comparison {
+    let electricityForOneServing = 9.1
+    const { roundedServings, roundedUsage } = calculateRoundedServingsAndUsage(electricityForOneServing, electricity)
+    let comparison = new Comparison()
+    comparison.logo = Logo.Moon
+    comparison.name = `Launch ${roundedServings} kilos into orbit`
+    comparison.resourceType = ResourceType.Electricity
+    comparison.resourceUsage = roundedUsage
+    return comparison
+}
+
 type RoundedServingsAndUsage = {
     roundedServings: number
     roundedUsage: number
@@ -99,4 +110,4 @@ function generateAppleAirPodsData(ewaste: number): Comparison {
     return comparison
 }
 
-export { comparisonsData, generateChickenData, generateKettleData,generateAppleWatchData,generateAppleAirPodsData,generateLifeSupportData }
+export { comparisonsData, generateChickenData, generateKettleData,generateAppleWatchData,generateAppleAirPodsData,generateLifeSupportData, generateRocketData }
