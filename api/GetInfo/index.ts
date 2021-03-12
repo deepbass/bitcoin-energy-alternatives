@@ -1,5 +1,4 @@
 import { AzureFunction, Context, HttpRequest } from "@azure/functions"
-import { bitcoinResourceUsageData } from "../src/data/BitcoinResourceUsageData";
 import { comparisonsData, generateAppleAirPodsData, generateAppleWatchData, generateChickenData, generateKettleData, generateLifeSupportData, generateRocketData } from "../src/data/ComparisonData";
 import { BitcoinResourceUsage } from "../src/models/BitcoinResourceUsage";
 import { ResourceType } from "../src/models/ResourceType";
@@ -15,11 +14,11 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
     ]
 
     const comparisons = localComparisonsData.filter(x => {
-        if(x.resourceType === ResourceType.CarbonDioxide && x.resourceUsage <= bitcoinResourceUsageData.carbonDioxideInKg){
+        if(x.resourceType === ResourceType.CarbonDioxide && x.resourceUsage <= resourceUsage.carbonDioxideInKg){
             return true
-        } else if(x.resourceType === ResourceType.EWaste && x.resourceUsage <= bitcoinResourceUsageData.eWasteInGrams){
+        } else if(x.resourceType === ResourceType.EWaste && x.resourceUsage <= resourceUsage.eWasteInGrams){
             return true
-        } else if(x.resourceType === ResourceType.Electricity && x.resourceUsage <= bitcoinResourceUsageData.electricityUsageInkWh){
+        } else if(x.resourceType === ResourceType.Electricity && x.resourceUsage <= resourceUsage.electricityUsageInkWh){
             return true
         }
         return false
