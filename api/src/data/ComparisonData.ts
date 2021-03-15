@@ -26,6 +26,12 @@ const comparisonsData: Comparison[] = [
         resourceType: ResourceType.Electricity,
         resourceUsage: 665,
         logo: Logo.Car
+    },
+    {
+        name: "Drive a Tesla Model 3 from New York to San Francisco",
+        resourceType: ResourceType.Electricity,
+        resourceUsage: 708,
+        logo: Logo.Car
     }
 ]
 
